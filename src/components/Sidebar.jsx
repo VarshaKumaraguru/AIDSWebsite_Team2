@@ -1,6 +1,6 @@
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-export default function Sidebar({ isOpen, toggleSidebar }) {
+export default function Sidebar({ isOpen, toggleSidebar, setProfileMenuOpen }) {
   const menu = [
     "Dashboard",
     "Leaderboards",
@@ -65,6 +65,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
 
         {/* Edit Profile */}
         <button
+          onClick={() => setProfileMenuOpen && setProfileMenuOpen(true)}
           className="
             mt-10 px-4 py-2 
             rounded-lg 
