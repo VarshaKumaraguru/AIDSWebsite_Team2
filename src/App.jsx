@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Codenigma from "./pages/Codenigma";
 import Genesys from "./pages/Genesys";
+import FacultyInfo from "./pages/FacultyInfo";
 
 // Images
 import img1 from "./assets/leetcode.png";
@@ -14,7 +15,6 @@ import "./style.css";
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
-  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   // Listen for navbar navigate-home custom event (dispatched by Navbar)
@@ -33,7 +33,7 @@ export default function App() {
       <Sidebar
         isOpen={isOpen}
         toggleSidebar={toggleSidebar}
-        setProfileMenuOpen={setProfileMenuOpen}
+        setCurrentPage={setCurrentPage}
       />
 
       {/* MAIN AREA */}
@@ -43,11 +43,7 @@ export default function App() {
         }`}
       >
         {/* NAVBAR */}
-        <Navbar
-          toggleSidebar={toggleSidebar}
-          profileMenuOpen={profileMenuOpen}
-          setProfileMenuOpen={setProfileMenuOpen}
-        />
+        <Navbar toggleSidebar={toggleSidebar} />
 
         {/* PAGE CONTENT */}
         {currentPage === "home" ? (
@@ -127,7 +123,7 @@ export default function App() {
             <section className="bg-transparent">
               {currentPage === "codenigma" && <Codenigma />}
               {currentPage === "genesys" && <Genesys />}
-              {currentPage === "edit-profile" && <EditProfile />}
+              {currentPage === "faculty-info" && <FacultyInfo />}
             </section>
           </main>
         )}

@@ -1,14 +1,25 @@
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useState } from "react";
 
-export default function Sidebar({ isOpen, toggleSidebar, setProfileMenuOpen }) {
+export default function Sidebar({ isOpen, toggleSidebar, setCurrentPage }) {
+  const [dashboardOpen, setDashboardOpen] = useState(false);
+
   const menu = [
-    "Dashboard",
+    { name: "Dashboard", dropdown: ["Faculty Info", "Staff Info", "Syllabus"] },
     "Leaderboards",
     "Events",
     "Achievements",
     "Connect",
     "Projects",
   ];
+
+  const handleSubMenuClick = (item) => {
+    if (item === "Faculty Info") {
+      setCurrentPage("faculty-info");
+    } else {
+      // Handle other menu item clicks if needed
+    }
+  };
 
   return (
     <>
@@ -46,26 +57,66 @@ export default function Sidebar({ isOpen, toggleSidebar, setProfileMenuOpen }) {
       >
         {/* MENU */}
         <nav className="space-y-3">
-          {menu.map((item) => (
-            <button
-              key={item}
-              className="
-                w-full text-left px-4 py-2 
-                rounded-lg 
-                text-blue-900 
-                font-medium
-                hover:bg-blue-100
-                transition
-              "
-            >
-              {item}
-            </button>
-          ))}
+          {menu.map((item) =>
+            typeof item === "string" ? (
+              <button
+                key={item}
+                className="
+                  w-full text-left px-4 py-2 
+                  rounded-lg 
+                  text-blue-900 
+                  font-medium
+                  hover:bg-blue-100
+                  transition
+                "
+              >
+                {item}
+              </button>
+            ) : (
+              <div 
+                key={item.name}
+                onMouseEnter={() => setDashboardOpen(true)}
+                onMouseLeave={() => setDashboardOpen(false)}
+              >
+                <button
+                  className="
+                    w-full text-left px-4 py-2 
+                    rounded-lg 
+                    text-blue-900 
+                    font-medium
+                    hover:bg-blue-100
+                    transition
+                  "
+                >
+                  {item.name}
+                </button>
+                {dashboardOpen && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    {item.dropdown.map((subItem) => (
+                      <button
+                        key={subItem}
+                        onClick={() => handleSubMenuClick(subItem)}
+                        className="
+                          w-full text-left px-4 py-2 
+                          rounded-lg 
+                          text-sm
+                          text-blue-800 
+                          hover:bg-blue-50
+                          transition
+                        "
+                      >
+                        {subItem}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          )}
         </nav>
 
         {/* Edit Profile */}
         <button
-          onClick={() => setProfileMenuOpen && setProfileMenuOpen(true)}
           className="
             mt-10 px-4 py-2 
             rounded-lg 
