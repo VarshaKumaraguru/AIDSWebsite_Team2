@@ -2,10 +2,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
 
 export default function Sidebar({ isOpen, toggleSidebar, setCurrentPage }) {
-  const [dashboardOpen, setDashboardOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   const menu = [
-    { name: "Dashboard", dropdown: ["Faculty Info", "Staff Info", "Syllabus"] },
+    { name: "About", dropdown: ["Faculty Info", "Staff Info", "Syllabus"] },
     "Leaderboards",
     "Events",
     "Achievements",
@@ -75,8 +75,8 @@ export default function Sidebar({ isOpen, toggleSidebar, setCurrentPage }) {
             ) : (
               <div 
                 key={item.name}
-                onMouseEnter={() => setDashboardOpen(true)}
-                onMouseLeave={() => setDashboardOpen(false)}
+                onMouseEnter={() => setAboutOpen(true)}
+                onMouseLeave={() => setAboutOpen(false)}
               >
                 <button
                   className="
@@ -90,7 +90,7 @@ export default function Sidebar({ isOpen, toggleSidebar, setCurrentPage }) {
                 >
                   {item.name}
                 </button>
-                {dashboardOpen && (
+                {aboutOpen && (
                   <div className="pl-4 mt-2 space-y-2">
                     {item.dropdown.map((subItem) => (
                       <button
