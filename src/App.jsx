@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import NotFound from "./pages/NotFound";
 import Codenigma from "./pages/Codenigma";
 import Genesys from "./pages/Genesys";
 import FacultyInfo from "./pages/FacultyInfo";
+import Syllabus from "./pages/Syllabus";
+import StaffInfo from "./pages/StaffInfo";   // ✅ ADDED
 
 // Images
 import img1 from "./assets/leetcode.png";
@@ -15,9 +18,13 @@ import "./style.css";
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
+
+  // profile dropdown state
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+
   const toggleSidebar = () => setIsOpen(!isOpen);
 
-  // Listen for navbar navigate-home custom event (dispatched by Navbar)
+  // Listen for navbar navigate-home event
   useEffect(() => {
     function handleNavigateHome() {
       setCurrentPage("home");
@@ -34,6 +41,8 @@ export default function App() {
         isOpen={isOpen}
         toggleSidebar={toggleSidebar}
         setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        setProfileMenuOpen={setProfileMenuOpen}
       />
 
       {/* MAIN AREA */}
@@ -43,7 +52,12 @@ export default function App() {
         }`}
       >
         {/* NAVBAR */}
-        <Navbar toggleSidebar={toggleSidebar} />
+        <Navbar
+          toggleSidebar={toggleSidebar}
+          setPage={setCurrentPage}
+          profileMenuOpen={profileMenuOpen}
+          setProfileMenuOpen={setProfileMenuOpen}
+        />
 
         {/* PAGE CONTENT */}
         {currentPage === "home" ? (
@@ -51,7 +65,6 @@ export default function App() {
 
             {/* HEADER SECTION */}
             <section className="bg-white p-10 rounded-2xl shadow-md border border-gray-200">
-              
               <h1 className="text-4xl font-extrabold text-blue-900 mb-4">
                 Welcome to the Department of AI and DS
               </h1>
@@ -62,7 +75,7 @@ export default function App() {
                 industry collaboration, and a dynamic learning environment.
               </p>
 
-              {/* RESPONSIVE STATS */}
+              {/* STATS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
                 {[
                   { label: "Ongoing Projects", value: "50+" },
@@ -79,28 +92,24 @@ export default function App() {
                   </div>
                 ))}
               </div>
-
-              {/* end of header section (carousel moved to Events below) */}
-
             </section>
 
-            {/* EVENTS (separate section for carousel) */}
+            {/* EVENTS */}
             <section id="events" className="bg-white mt-12 p-8 rounded-2xl shadow-md border border-gray-200">
               <h2 className="text-2xl font-bold mb-6 text-blue-900">Events</h2>
-              <div className="">
-                  <Dashboard_Carousel
-                    slides={[{ img: img1, page: "codenigma" }, { img: img2, page: "genesys" }]}
-                    onSelect={(page) => setCurrentPage && setCurrentPage(page)}
-                  />
-              </div>
+
+              <Dashboard_Carousel
+                slides={[
+                  { img: img1, page: "codenigma" },
+                  { img: img2, page: "genesys" },
+                ]}
+                onSelect={(page) => setCurrentPage(page)}
+              />
             </section>
 
             {/* RECENT UPDATES */}
             <section className="bg-white mt-12 p-8 rounded-2xl shadow-md border border-gray-200">
-              
-              <h2 className="text-2xl font-bold mb-6 text-blue-900">
-                Recent Updates
-              </h2>
+              <h2 className="text-2xl font-bold mb-6 text-blue-900">Recent Updates</h2>
 
               <div className="space-y-4">
                 {[
@@ -114,16 +123,23 @@ export default function App() {
                   </div>
                 ))}
               </div>
-
             </section>
-
           </main>
         ) : (
           <main className="flex-1 overflow-y-auto p-10">
             <section className="bg-transparent">
+
               {currentPage === "codenigma" && <Codenigma />}
               {currentPage === "genesys" && <Genesys />}
               {currentPage === "faculty-info" && <FacultyInfo />}
+              {currentPage === "staff-info" && <StaffInfo />}     {/* ✅ STAFF ADDED */}
+              {currentPage === "syllabus" && <Syllabus />}
+
+              {/* Not Found fallback */}
+              {!["codenigma", "genesys", "faculty-info", "staff-info", "syllabus"].includes(currentPage) && (
+                <NotFound />
+              )}
+
             </section>
           </main>
         )}
