@@ -1,4 +1,3 @@
-
 import React from 'react';
 import FacultyCard from '../components/FacultyCard';
 
@@ -123,7 +122,7 @@ const FacultyInfo = () => {
             />
           </div>
           <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{hod.name}</div>
+            <div className="uppercase tracking-wide text-xl text-indigo-500 font-semibold">{hod.name}</div>
             <p className="block mt-1 text-lg leading-tight font-medium text-black">{hod.title}</p>
             <p className="block mt-1 text-lg leading-tight font-medium text-black">{hod.specialization}</p>
             <a href={`mailto:${hod.email}`} className="mt-2 text-gray-500 hover:text-indigo-600">{hod.email}</a>
