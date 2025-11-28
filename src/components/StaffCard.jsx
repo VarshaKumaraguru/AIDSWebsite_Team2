@@ -8,7 +8,7 @@ const StaffCard = ({ staff }) => {
       <img
         src={staff.imageUrl}
         alt={staff.name}
-        className="w-full h-auto object-cover transition-transform duration-300 transform group-hover:scale-110"
+        className="w-5/6 h-auto object-cover transition-transform duration-300 transform group-hover:scale-110 mx-auto"
       />
       {/* Overlay for the background */}
       <div

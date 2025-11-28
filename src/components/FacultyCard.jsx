@@ -8,7 +8,7 @@ const FacultyCard = ({ faculty }) => {
       <img
         src={faculty.imageUrl}
         alt={faculty.name}
-        className="w-full h-auto object-cover transition-transform duration-300 transform group-hover:scale-110"
+        className="w-5/6 h-auto object-cover transition-transform duration-300 transform group-hover:scale-110 mx-auto"
       />
       {/* Overlay for the background */}
       <div
@@ -25,7 +25,7 @@ const FacultyCard = ({ faculty }) => {
             <div className="flex flex-col items-center mt-2">
               <a href={faculty.googleSite} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">Google Site</a>
               <a href={faculty.googleScholar} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-              <a href={faculty.orcid} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">ORCiD</a>
+              <a href={faculty.orcid} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py.jsx-1" target="_blank" rel="noopener noreferrer">ORCiD</a>
             </div>
         </div>
       </div>
