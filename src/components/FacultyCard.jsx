@@ -23,9 +23,11 @@ const FacultyCard = ({ faculty }) => {
             <p className="text-sm mb-1">{faculty.specialization}</p>
             <p className="text-xs mb-1">{faculty.googleId}</p>
             <p className="text-xs mb-3">{faculty.mailId}</p>
-            <a href={faculty.googleScholar} className="text-sm text-blue-600 hover:underline">
-              Google Scholar
-            </a>
+            <div className="flex flex-col items-center mt-2">
+              <a href={faculty.googleSite} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">Google Site</a>
+              <a href={faculty.googleScholar} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a href={faculty.orcid} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">ORCiD</a>
+            </div>
         </div>
       </div>
     </div>
