@@ -92,7 +92,7 @@ const FacultyInfo = () => {
       googleSite: 'javascript:void(0)',
       googleScholar: 'javascript:void(0)',
       orcid: 'javascript:void(0)',
-      imageUrl: 'https://image2url.com/images/1763822307567-7634608c-a785-4a28-a3e7-5a2ac0e0c9e0.jpg',
+      imageUrl: 'https://image2url.com/images/1763822328307-2aa96916-1928-4a95-a4cc-3bd0de25397d.jpg',
     },
     {
       name: 'Ms. B. Sree Krishna',
@@ -102,7 +102,7 @@ const FacultyInfo = () => {
       googleSite: 'javascript:void(0)',
       googleScholar: 'javascript:void(0)',
       orcid: 'javascript:void(0)',
-      imageUrl: 'https://image2url.com/images/1763822328307-2aa96916-1928-4a95-a4cc-3bd0de25397d.jpg',
+      imageUrl: 'https://image2url.com/images/1763822307567-7634608c-a785-4a28-a3e7-5a2ac0e0c9e0.jpg',
     },
   ];
 
