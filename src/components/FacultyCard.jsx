@@ -21,8 +21,7 @@ const FacultyCard = ({ faculty }) => {
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
             <h3 className="text-xl font-bold mb-2">{faculty.name}</h3>
             <p className="text-sm mb-1">{faculty.specialization}</p>
-            <p className="text-xs mb-1">{faculty.googleId}</p>
-            <p className="text-xs mb-3">{faculty.mailId}</p>
+            <a href={`mailto:${faculty.email}`} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1">{faculty.email}</a>
             <div className="flex flex-col items-center mt-2">
               <a href={faculty.googleSite} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">Google Site</a>
               <a href={faculty.googleScholar} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium py-1" target="_blank" rel="noopener noreferrer">Google Scholar</a>

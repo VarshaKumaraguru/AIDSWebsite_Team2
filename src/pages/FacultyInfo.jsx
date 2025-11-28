@@ -126,7 +126,7 @@ const FacultyInfo = () => {
             <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{hod.name}</div>
             <p className="block mt-1 text-lg leading-tight font-medium text-black">{hod.title}</p>
             <p className="block mt-1 text-lg leading-tight font-medium text-black">{hod.specialization}</p>
-            <p className="mt-2 text-gray-500">{hod.email}</p>
+            <a href={`mailto:${hod.email}`} className="mt-2 text-gray-500 hover:text-indigo-600">{hod.email}</a>
             <div className="mt-4">
               <a href={hod.googleSite} className="text-indigo-500 hover:text-indigo-600 font-semibold" target="_blank" rel="noopener noreferrer">Google Site</a>
               <span className="mx-2">|</span>
